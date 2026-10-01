@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy go親子寵物友善空間 - 專屬預訂網站</title>
+    <style>
+        body { font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; background-color: #f4f6f9; margin: 0; padding: 0; color: #333; }
+        nav { background: #ffffff; padding: 15px 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center; }
+        nav h1 { margin: 0; color: #1e3a8a; font-size: 22px; }
+        
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; display: flex; flex-wrap: wrap; gap: 30px; }
+        .left-content { flex: 1.2; min-width: 320px; }
+        .right-content { flex: 1; min-width: 300px; }
+        
+        .card { background: #ffffff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 25px; border: 1px solid #eef2f6; }
+        
+        .photo-box { width: 100%; height: 380px; background-color: #e2e8f0; border-radius: 12px; display: flex; justify-content: center; align-items: center; color: #64748b; font-size: 20px; font-weight: bold; border: 1px solid #cbd5e1; overflow: hidden; }
+        .photo-box img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .thumb-bar { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+        .thumb-box { flex: 1; min-width: 85px; max-width: 110px; height: 50px; background: #f1f5f9; border-radius: 8px; cursor: pointer; border: 2px solid #cbd5e1; display: flex; justify-content: center; align-items: center; color: #475569; font-size: 11px; font-weight: bold; transition: all 0.2s; padding: 4px; text-align: center; box-sizing: border-box; }
+        .thumb-box:hover { background: #e2e8f0; }
+        .thumb-box.active { border-color: #2563eb !important; background: #dbeafe; color: #2563eb; }
+
+        .calendar-wrapper { position: relative; padding-bottom: 100%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .calendar-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        .price-tag { font-size: 26px; font-weight: 800; color: #1e293b; margin-bottom: 15px; }
+        .price-tag span { font-size: 14px; color: #64748b; font-weight: normal; }
+        
+        .notice-box { background: #f8fafc; padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 13px; color: #475569; line-height: 1.6; border: 1px solid #f1f5f9; }
+        
+        .btn-checkout { display: block; width: 100%; background: #2563eb; color: #ffffff; text-align: center; padding: 15px 0; border-radius: 12px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 12px rgba(37,99,235,0.25); font-size: 16px; transition: background 0.2s; box-sizing: border-box; }
+        .btn-checkout:hover { background: #1d4ed8; }
+        
+        .intro-p { color: #475569; line-height: 1.8; font-size: 15px; margin: 0; white-space: pre-line; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h1>🏠 Happy go親子寵物友善空間</h1>
+        <div style="color: #64748b; font-size: 14px; font-weight: 500;">自主接單官網</div>
+    </nav>
+
+    <div class="container">
+        <!-- 左側：照片瀏覽與房源介紹 -->
+        <div class="left-content">
+            <div class="card">
+                <div class="photo-box">
+                    <!-- 預設首圖直接載入 room3.jpg -->
+                    <img id="current-img" src="room3.jpg" alt="空間主圖" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 請確認照片與網頁檔案是否放在同個資料夾';">
+                </div>
+                
+                <!-- 照片分類按鈕（已完美對齊你截圖中的 10 張本機照片檔名） -->
+                <div class="thumb-bar">
+                    <div class="thumb-box active" onclick="switchPhoto(this, 'room3.jpg')">三樓四人房</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'lobby.jpg')">溫馨客廳</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'floor2.jpg')">二樓空間</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'yard.jpg')">寬敞後院</div>
+                    
+                    <!-- 房間系列 -->
+                    <div class="thumb-box" onclick="switchPhoto(this, 'room.jpg')">客房樣式一</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'room1.jpg')">客房樣式二</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'room2.jpg')">客房樣式三</div>
+                    
+                    <!-- 浴室系列 -->
+                    <div class="thumb-box" onclick="switchPhoto(this, 'shower1.jpg')">浴室樣式一</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'shower2.jpg')">浴室樣式二</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'shower3.jpg')">浴室樣式三</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 style="margin: 0 0 10px 0; font-size: 24px; color: #0f172a;">Happy go親子寵物友善空間</h2>
+                <p style="color: #64748b; font-size: 14px; margin: 0 0 20px 0;">📍 寵物友善 / 親子包棟首選 / 整棟共 14 個床位</p>
+                <hr style="border: 0; border-top: 1px solid #edf2f7; margin-bottom: 20px;">
+                <h3 style="color: #1e293b; margin-bottom: 12px;">空間簡介與使用規範</h3>
+                <p class="intro-p">遠離塵囂，在一片星空下緩緩入睡。
+                
+                總共三層樓，每層配備浴室。
+                一樓為兩間雙人雅房及客廳、完善的廚房及設備；
+                二樓為一間雙人套房、兩間雙人雅房；
+                三樓為一間四人套房並擁有大浴缸盥洗空間及大陽台空間。
+
+                整棟共14個床位，如需加床及人數請於預訂時聯繫詢問，酌收加床費及人數費用。
+
+                【使用權限】
+                包棟所有空間皆可使用，除樓頂水塔及儲藏空間，避免發生危險。
+
+                【溫馨提醒】
+                響應環保不提供一次性備品，僅有洗髮、沐浴用品。
+                屋內提供物品僅供住宿使用，請勿攜出及帶走。如有損壞及遺失需照價賠償。</p>
+            </div>
+        </div>
+
+        <!-- 右側：金流資訊區 -->
+        <div class="right-content">
+            <div class="card" style="position: sticky; top: 30px;">
+                <div class="price-tag">NT\$ 15,000 <span>/ 包棟每晚起</span></div>
+                
+                <div class="notice-box">
+                    <strong>📅 如何預訂 Happy go：</strong><br>
+                    1. 請先查看下方日曆確認可預訂的日期。<br>
+                    2. 點擊下方按鈕填寫「預訂資訊表單」。<br>
+                    3. 表單送出後將提供你匯款帳戶與聯絡資訊。<br>
+                    4. 匯款完成後請主動通知我們即為您留房！
+                </div>
+
+                <div class="calendar-wrapper" style="margin-bottom: 20px;">
+                    <iframe src="https://google.com" style="border: 0" frameborder="0" scrolling="no"></iframe>
+                </div>
+
+                <a id="booking-btn" href="https://google.com" target="_blank" class="btn-checkout">
+                    📋 前往填寫預訂表單
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchPhoto(element, imgUrl) {
+            document.getElementById('current-img').src = imgUrl;
+            document.querySelectorAll('.thumb-bar .thumb-box').forEach(box => box.classList.remove('active'));
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
