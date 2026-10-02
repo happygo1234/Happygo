@@ -1,3 +1,4 @@
+<!-- === 【沉靜卡其色 & 日曆原封不動修正版】 === -->
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -5,78 +6,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy go親子寵物友善空間 - 專屬預訂網站</title>
     <style>
-        body { font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; background-color: #f4f6f9; margin: 0; padding: 0; color: #333; }
-        nav { background: #ffffff; padding: 15px 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center; }
-        nav h1 { margin: 0; color: #1e3a8a; font-size: 22px; }
+        /* 全體背景：溫潤安靜的淡奶茶米色 */
+        body { font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; background-color: #f7f4f0; margin: 0; padding: 0; color: #5a524e; }
+        
+        /* 導覽列與標題：沉穩的深焙咖啡色 */
+        nav { background: #ffffff; padding: 15px 30px; box-shadow: 0 2px 10px rgba(90,82,78,0.03); display: flex; justify-content: space-between; align-items: center; }
+        nav h1 { margin: 0; color: #4a3f3b; font-size: 22px; }
         
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; display: flex; flex-wrap: wrap; gap: 30px; }
         .left-content { flex: 1.2; min-width: 320px; }
         .right-content { flex: 1; min-width: 300px; }
         
-        .card { background: #ffffff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 25px; border: 1px solid #eef2f6; }
+        /* 卡片外框：使用低彩度的溫暖淺卡其邊框 */
+        .card { background: #ffffff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 14px rgba(90,82,78,0.03); margin-bottom: 25px; border: 1px solid #e8e2dc; }
         
-        .photo-box { width: 100%; height: 380px; background-color: #e2e8f0; border-radius: 12px; display: flex; justify-content: center; align-items: center; color: #64748b; font-size: 20px; font-weight: bold; border: 1px solid #cbd5e1; overflow: hidden; }
+        .photo-box { width: 100%; height: 380px; background-color: #f0eae4; border-radius: 12px; display: flex; justify-content: center; align-items: center; color: #9c928c; font-size: 16px; font-weight: bold; border: 1px solid #dfd6ce; overflow: hidden; position: relative; }
         .photo-box img { width: 100%; height: 100%; object-fit: cover; }
+        .image-error-msg { position: absolute; text-align: center; padding: 20px; color: #9c928c; }
         
         .thumb-bar { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-        .thumb-box { flex: 1; min-width: 85px; max-width: 110px; height: 50px; background: #f1f5f9; border-radius: 8px; cursor: pointer; border: 2px solid #cbd5e1; display: flex; justify-content: center; align-items: center; color: #475569; font-size: 11px; font-weight: bold; transition: all 0.2s; padding: 4px; text-align: center; box-sizing: border-box; }
-        .thumb-box:hover { background: #e2e8f0; }
-        .thumb-box.active { border-color: #2563eb !important; background: #dbeafe; color: #2563eb; }
+        
+        /* 縮圖按鈕：未選中時為輕灰卡其，選中時變為低飽和的深卡其色 */
+        .thumb-box { flex: 1; min-width: 85px; max-width: 110px; height: 50px; background: #fbf9f7; border-radius: 8px; cursor: pointer; border: 2px solid #e8e2dc; display: flex; justify-content: center; align-items: center; color: #8a7e78; font-size: 11px; font-weight: bold; transition: all 0.2s; padding: 4px; text-align: center; box-sizing: border-box; }
+        .thumb-box:hover { background: #f2ebe4; }
+        .thumb-box.active { border-color: #8c7b70 !important; background: #f0eae4; color: #4a3f3b; }
 
-        .calendar-wrapper { position: relative; padding-bottom: 100%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .calendar-wrapper { position: relative; padding-bottom: 100%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid #e8e2dc; }
         .calendar-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .price-tag { font-size: 26px; font-weight: 800; color: #1e293b; margin-bottom: 15px; }
-        .price-tag span { font-size: 14px; color: #64748b; font-weight: normal; }
+        /* 價格標籤：還原為原本沉靜耐看、具高辨識度的藍色 */
+        /* 修正後的價格排版樣式，確保所有文字齊高、等粗、完美對齊 */
+.price-tag { 
+    font-size: 26px; 
+    font-weight: 800; 
+    color: #4a3f3b; 
+    margin-bottom: 15px; 
+    display: flex; 
+    align-items: baseline; /* 讓所有文字底部完美對齊在同一條線上 */
+    gap: 4px; /* 讓文字和數字之間有舒適的微小間距 */
+}
+
+/* 確保不論是原本的文字還是經由 JS 替換的數字，都維持相同的粗細與大小 */
+.price-tag #dynamic-price {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+/* 後方「/ 包棟每晚起」的樣式優化 */
+.price-tag span { 
+    font-size: 14px; 
+    color: #9c928c; 
+    font-weight: normal; 
+}
+
         
-        .notice-box { background: #f8fafc; padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 13px; color: #475569; line-height: 1.6; border: 1px solid #f1f5f9; }
+        /* 說明區區塊：低彩度亞麻棕 */
+        .notice-box { background: #fbf9f7; padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 13px; color: #7a6e67; line-height: 1.6; border: 1px solid #edf2f7; }
         
-        .btn-checkout { display: block; width: 100%; background: #2563eb; color: #ffffff; text-align: center; padding: 15px 0; border-radius: 12px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 12px rgba(37,99,235,0.25); font-size: 16px; transition: background 0.2s; box-sizing: border-box; }
-        .btn-checkout:hover { background: #1d4ed8; }
+        /* 預訂按鈕：內斂優雅的「不飽和莫蘭迪卡其棕」，視覺更沉穩 */
+        .btn-booking { display: block; width: 100%; background: #8c7b70; color: #ffffff; text-align: center; padding: 15px 0; border-radius: 12px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 12px rgba(140,123,112,0.15); font-size: 16px; transition: background 0.2s, transform 0.1s; box-sizing: border-box; }
+        .btn-booking:hover { background: #76665c; box-shadow: 0 4px 16px rgba(118,102,92,0.25); }
+        .btn-booking:active { transform: scale(0.98); }
         
-        .intro-p { color: #475569; line-height: 1.8; font-size: 15px; margin: 0; white-space: pre-line; }
+        .intro-p { color: #6e645e; line-height: 1.8; font-size: 15px; margin: 0; white-space: pre-line; }
     </style>
 </head>
 <body>
 
     <nav>
-        <h1>🏠 Happy go親子寵物友善空間</h1>
-        <div style="color: #64748b; font-size: 14px; font-weight: 500;">自主接單官網</div>
+        <h1>🐾 Happy go 親子寵物友善空間</h1>
+        <div style="color: #9c928c; font-size: 14px; font-weight: 500;">自主接單官網</div>
     </nav>
 
     <div class="container">
         <!-- 左側：照片瀏覽與房源介紹 -->
         <div class="left-content">
             <div class="card">
-                <div class="photo-box">
-                    <!-- 預設首圖直接載入 room3.jpg -->
-                    <img id="current-img" src="room3.jpg" alt="空間主圖" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 請確認照片與網頁檔案是否放在同個資料夾';">
+                <div class="photo-box" id="main-photo-container">
+                    <img id="current-img" src="room3.jpg" alt="空間主圖" onerror="handleImageError(this)">
                 </div>
                 
-                <!-- 照片分類按鈕（已完美對齊你截圖中的 10 張本機照片檔名） -->
                 <div class="thumb-bar">
                     <div class="thumb-box active" onclick="switchPhoto(this, 'room3.jpg')">三樓四人房</div>
                     <div class="thumb-box" onclick="switchPhoto(this, 'lobby.jpg')">溫馨客廳</div>
                     <div class="thumb-box" onclick="switchPhoto(this, 'floor2.jpg')">二樓空間</div>
                     <div class="thumb-box" onclick="switchPhoto(this, 'yard.jpg')">寬敞後院</div>
                     
-                    <!-- 房間系列 -->
-                    <div class="thumb-box" onclick="switchPhoto(this, 'room.jpg')">客房樣式一</div>
-                    <div class="thumb-box" onclick="switchPhoto(this, 'room1.jpg')">客房樣式二</div>
-                    <div class="thumb-box" onclick="switchPhoto(this, 'room2.jpg')">客房樣式三</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'room.jpg')">一樓雙人房</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'room1.jpg')">二樓雙人房</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'room2.jpg')">二樓雙人套房</div>
                     
-                    <!-- 浴室系列 -->
-                    <div class="thumb-box" onclick="switchPhoto(this, 'shower1.jpg')">浴室樣式一</div>
-                    <div class="thumb-box" onclick="switchPhoto(this, 'shower2.jpg')">浴室樣式二</div>
-                    <div class="thumb-box" onclick="switchPhoto(this, 'shower3.jpg')">浴室樣式三</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'shower1.jpg')">二樓共用衛浴</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'shower2.jpg')">二樓套房衛浴</div>
+                    <div class="thumb-box" onclick="switchPhoto(this, 'shower3.jpg')">三樓衛浴</div>
                 </div>
             </div>
 
             <div class="card">
-                <h2 style="margin: 0 0 10px 0; font-size: 24px; color: #0f172a;">Happy go親子寵物友善空間</h2>
-                <p style="color: #64748b; font-size: 14px; margin: 0 0 20px 0;">📍 寵物友善 / 親子包棟首選 / 整棟共 14 個床位</p>
-                <hr style="border: 0; border-top: 1px solid #edf2f7; margin-bottom: 20px;">
-                <h3 style="color: #1e293b; margin-bottom: 12px;">空間簡介與使用規範</h3>
+                <h2 style="margin: 0 0 10px 0; font-size: 24px; color: #4a3f3b;">Happy go親子寵物友善空間</h2>
+                <p style="color: #9c928c; font-size: 14px; margin: 0 0 20px 0;">📍 寵物友善 / 親子包棟首選 / 整棟共 14 個床位</p>
+                <hr style="border: 0; border-top: 1px solid #e8e2dc; margin-bottom: 20px;">
+                <h3 style="color: #4a3f3b; margin-bottom: 12px;">空間簡介與使用規範</h3>
                 <p class="intro-p">遠離塵囂，在一片星空下緩緩入睡。
                 
                 總共三層樓，每層配備浴室。
@@ -95,10 +125,11 @@
             </div>
         </div>
 
-        <!-- 右側：金流資訊區 -->
+        <!-- 右側：金流資訊與預約區 -->
         <div class="right-content">
             <div class="card" style="position: sticky; top: 30px;">
-                <div class="price-tag">NT\$ 15,000 <span>/ 包棟每晚起</span></div>
+                <div class="price-tag">NT$ <span id="dynamic-price">15,800</span> <span>/ 包棟每晚起</span></div>
+
                 
                 <div class="notice-box">
                     <strong>📅 如何預訂 Happy go：</strong><br>
@@ -108,23 +139,115 @@
                     4. 匯款完成後請主動通知我們即為您留房！
                 </div>
 
+                <!-- 🔒 這裡完全是你手動修正成功的 iframe，字元完全不動 🔒 -->
                 <div class="calendar-wrapper" style="margin-bottom: 20px;">
-                    <iframe src="https://google.com" style="border: 0" frameborder="0" scrolling="no"></iframe>
+                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia/Taipei&showPrint=0&src=aW5pY2VzaG9wMTJAZ21haWwuY29t&src=YmE3NzZlNjU4NTI1NmI4YzQ0Yzk4NjhmY2Y3NDYzMjYzMDk4NmYwZTQ1NGY2YTUzNTg0NjFlMDQwYWU1YmQ1N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=emgtdHcudGFpd2FuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039be5&color=%237986cb&color=%230b8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
                 </div>
 
-                <a id="booking-btn" href="https://google.com" target="_blank" class="btn-checkout">
+                <a class="btn-booking" href="https://docs.google.com/forms/d/e/1FAIpQLSdfcH8seQIOgaCpSgClFgbDrDfiC5JqxYh3qrGf9SkVeRIBEQ/viewform?usp=header" target="_blank">
                     📋 前往填寫預訂表單
-                </a>
+                </a><!-- 貼在預訂按鈕正下方的定價說明區開始 -->
+<div class="price-table-box" style="margin-top: 20px; border-top: 1px dashed #e8e2dc; padding-top: 15px; font-size: 13px; color: #7a6e67; line-height: 1.8;">
+    <strong style="color: #4a3f3b; display: block; margin-bottom: 8px;">📋 房價收費標準：</strong>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+        <span>☕ 平日（週日至週四）</span>
+        <span style="font-weight: bold; color: #4a3f3b;">NT$ 15,800 / 晚</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+        <span>🎈 假日（週五至週六）</span>
+        <span style="font-weight: bold; color: #4a3f3b;">NT$ 17,800 / 晚</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+        <span>✨ 連續及特殊假期</span>
+        <span style="font-weight: bold; color: #4a3f3b;">NT$ 20,800 / 晚</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        
+    <div style="font-size: 11px; color: #9c928c; border-top: 1px solid #f2ebe4; padding-top: 6px; margin-top: 6px;">
+        ※ 整棟共 14 個床位，可加床。如需加床或超出人數，請於預訂時先行聯繫。加床與人頭費用依據需求酌收。實際總金額以表單送出後確認為準。
+    </div>
+</div>
+<!-- 定價說明區結束 -->
+
             </div>
         </div>
     </div>
 
     <script>
         function switchPhoto(element, imgUrl) {
-            document.getElementById('current-img').src = imgUrl;
+            const img = document.getElementById('current-img');
+            img.style.display = 'block';
+            const errorMsg = document.querySelector('.image-error-msg');
+            if (errorMsg) errorMsg.remove();
+            
+            img.src = imgUrl;
             document.querySelectorAll('.thumb-bar .thumb-box').forEach(box => box.classList.remove('active'));
             element.classList.add('active');
         }
-    </script>
+
+        function handleImageError(img) {
+            img.style.display = 'none';
+            const container = document.getElementById('main-photo-container');
+            if (!document.querySelector('.image-error-msg')) {
+                const msg = document.createElement('div');
+                msg.className = 'image-error-msg';
+                msg.innerHTML = '📷 請確認照片檔名（如 <b>' + img.getAttribute('src') + '</b>）<br>是否與此網頁放在同一個資料夾';
+                container.appendChild(msg);
+            }
+        }
+    // === 自動動態房價判斷邏輯 ===
+document.addEventListener("DOMContentLoaded", function() {
+    const priceSpan = document.getElementById('dynamic-price');
+    if (!priceSpan) return;
+
+    // 取得今天日期的 YYYY-MM-DD 字串
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    const todayStr = `${yyyy}-${mm}-${dd}`;
+    const dayOfWeek = today.getDay(); // 0 是週日，1-6 是週一至週六
+
+    // 1. 設定你預期的各時段價格
+    const priceWeekday = "15,800"; // 平日（週日至週四）
+    const priceWeekend = "17,800"; // 假日（週五至週六）
+    const priceFestival = "20,800"; // 連續及特殊假期
+
+    // 2. 自訂特殊節日日期範圍（請依每年公告手動維護更新）
+    // 範例：'2027-02-05' 到 '2027-02-12' (格式必須為 YYYY-MM-DD)
+    const specialHolidays = [
+        { start: '2027-01-01', end: '2027-01-03', name: '元旦連假' },
+        { start: '2027-02-05', end: '2027-02-12', name: '農曆春節' },
+        { start: '2027-04-02', end: '2027-04-05', name: '清明連假' },
+        { start: '2027-06-18', end: '2027-06-20', name: '端午連假' }
+    ];
+
+    // 3. 開始判斷價格優先順序
+    let finalPrice = priceWeekday; // 預設為平日價
+
+    // 判斷是否命中特殊節日
+    let isSpecial = false;
+    for (let holiday of specialHolidays) {
+        if (todayStr >= holiday.start && todayStr <= holiday.end) {
+            finalPrice = priceFestival;
+            isSpecial = true;
+            break;
+        }
+    }
+
+    // 若不是特殊節日，則依據星期幾來判斷平日、假日、特殊假期
+    if (!isSpecial) {
+        if (dayOfWeek === 5 || dayOfWeek === 6) {
+            finalPrice = priceWeekend; // 週五、週六為假日
+        } else {
+            finalPrice = priceWeekday; // 週日至週四為平日
+        }
+    }
+
+    // 4. 將畫面上原本的 15,800 精準替換為計算出來的價格
+    priceSpan.textContent = finalPrice;
+});
+</script>
 </body>
 </html>
+<!-- === 【沉靜卡其色 & 日曆原封不動修正版結束】 === -->
