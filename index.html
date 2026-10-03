@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy go親子寵物友善空間 - 專屬預訂網站</title>
+    
     <style>
         /* 全體背景：溫潤安靜的淡奶茶米色 */
         body { font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; background-color: #f7f4f0; margin: 0; padding: 0; color: #5a524e; }
@@ -69,6 +70,44 @@
         .btn-booking:active { transform: scale(0.98); }
         
         .intro-p { color: #6e645e; line-height: 1.8; font-size: 15px; margin: 0; white-space: pre-line; }
+/* 右下角 LINE 快速聯絡浮動按鈕樣式 */
+.line-float-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #06C755; /* LINE 官方標準綠色 */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(6,199,85,0.4);
+    z-index: 9999; /* 確保按鈕永遠浮在最上層，不會被日曆擋住 */
+    transition: transform 0.2s, background-color 0.2s;
+    text-decoration: none;
+}
+
+/* 滑鼠移上去時放大並稍微變深 */
+.line-float-btn:hover {
+    transform: scale(1.1);
+    background-color: #05b04b;
+}
+
+/* 點擊時的微小縮放回饋 */
+.line-float-btn:active {
+    transform: scale(0.95);
+}
+
+/* 按鈕內的文字/圖標樣式 */
+.line-float-btn span {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+}
+
     </style>
 </head>
 <body>
@@ -104,17 +143,19 @@
 
             <div class="card">
                 <h2 style="margin: 0 0 10px 0; font-size: 24px; color: #4a3f3b;">Happy go親子寵物友善空間</h2>
-                <p style="color: #9c928c; font-size: 14px; margin: 0 0 20px 0;">📍 寵物友善 / 親子包棟首選 / 整棟共 14 個床位</p>
+                <p style="color: #9c928c; font-size: 14px; margin: 0 0 20px 0;">📍 寵物友善 / 親子包棟首選 / 多元化空間</p>
                 <hr style="border: 0; border-top: 1px solid #e8e2dc; margin-bottom: 20px;">
                 <h3 style="color: #4a3f3b; margin-bottom: 12px;">空間簡介與使用規範</h3>
                 <p class="intro-p">遠離塵囂，在一片星空下緩緩入睡。
                 
-                總共三層樓，每層配備浴室。
+                共三層樓，14個床位，可加床，每層配備浴室。
+
                 一樓為兩間雙人雅房及客廳、完善的廚房及設備；
                 二樓為一間雙人套房、兩間雙人雅房；
-                三樓為一間四人套房並擁有大浴缸盥洗空間及大陽台空間。
+                三樓為一間四人套房並擁有大浴缸盥洗空間及大陽台。
+                並備有無限歡唱設備及電動麻將桌。
 
-                整棟共14個床位，如需加床及人數請於預訂時聯繫詢問，酌收加床費及人數費用。
+                如需加床及人數請於預訂時聯繫詢問，酌收加床及人數費用。
 
                 【使用權限】
                 包棟所有空間皆可使用，除樓頂水塔及儲藏空間，避免發生危險。
@@ -133,10 +174,10 @@
                 
                 <div class="notice-box">
                     <strong>📅 如何預訂 Happy go：</strong><br>
-                    1. 請先查看下方日曆確認可預訂的日期。<br>
-                    2. 點擊下方按鈕填寫「預訂資訊表單」。<br>
-                    3. 表單送出後將提供你匯款帳戶與聯絡資訊。<br>
-                    4. 匯款完成後請主動通知我們即為您留房！
+                    1. 請先查看下方日曆確認可訂日期,顯示"忙碌"表示已被預定。<br>
+                    2. 預定前可先Line詢問,或點擊下方按鈕填寫「預訂資訊表單」。<br>
+                    3. 填寫表單並送出後,將提供你匯款帳戶與聯絡資訊。<br>
+                    4. 匯款完成後請主動通知我們即為您留房,任何問題也能及時與您確認！
                 </div>
 
                 <!-- 🔒 這裡完全是你手動修正成功的 iframe，字元完全不動 🔒 -->
@@ -248,6 +289,11 @@ document.addEventListener("DOMContentLoaded", function() {
     priceSpan.textContent = finalPrice;
 });
 </script>
+<!-- 右下角 LINE 浮動按鈕開始 -->
+<!-- ⚠️ 請將下方的 "這裡填入你的LINE連結" 換成你之後決定的網址 ⚠️ -->
+<a class="line-float-btn" href="https://line.me/ti/p/TfPUe2S3vt" target="_blank" title="LINE 線上諮詢">
+    <span>LINE<br>諮詢</span>
+</a>
 </body>
 </html>
 <!-- === 【沉靜卡其色 & 日曆原封不動修正版結束】 === -->
